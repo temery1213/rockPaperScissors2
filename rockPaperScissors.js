@@ -1,5 +1,6 @@
 let playerScore = 0;
 let computerScore = 0;
+let playerSelection;
 
 function getComputerChoice() {
     return Math.floor(Math.random() * 3)
@@ -16,37 +17,38 @@ let computerSelection = getComputerChoice();
         computerSelection = "scissors";
     }
 
-   // const button = document.querySelector("button");
-//let playerSelection = button.addEventListener("click"); 
 
-
-function playRound(playerSelection, computerSelection) {
-    
-    if (playerSelection === "rock" && computerSelection === "paper"){
-        return computerScore++;
-    
-    } else if (playerSelection === "paper" && computerSelection === "scissors"){
-        return computerScore++;
-        
-    } else if (playerSelection === "scissors" && computerSelection === "rock"){
-        return computerScore++;
-    
-    } else if (playerSelection === "paper" && computerSelection === "rock") {
-        return playerScore++;
-    
-    } else if (playerSelection === "scissors" && computerSelection === "paper") {
-        return playerScore++;
-    
-    } else if (playerSelection === "rock" && computerSelection === "scissors") {
-        return playerScore++;
-    } else {
-        return;
+    function getPlayerSelection() {
+    playerSelection = prompt("Choose wisely...");
     }
 
+    function playRound(playerSelection, computerSelection) {
+        if (
+            (playerSelection === "rock" && computerSelection === "paper") ||
+            (playerSelection === "paper" && computerSelection === "scissors") ||
+            (playerSelection === "scissors" && computerSelection === "rock")
+        ) {
+            window.alert("Computer wins!");
+            computerScore++;
+        } else if (
+            (playerSelection === "paper" && computerSelection === "rock") ||
+            (playerSelection === "scissors" && computerSelection === "paper") ||
+            (playerSelection === "rock" && computerSelection === "scissors")
+        ) {
+            window.alert("Player wins!");
+            playerScore++;
+        } else {
+            window.alert("It's a draw!");
+        }
+    }
+    
 
-} 
-  const playerSelection = "paper";
-  console.log(playRound(playerSelection, computerSelection));
+
+
+  
+getPlayerSelection();
+
+console.log(playRound(playerSelection, computerSelection));
 
 console.log(computerSelection);
 console.log(playerSelection);
